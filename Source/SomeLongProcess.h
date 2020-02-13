@@ -18,6 +18,8 @@ public:
     SomeLongProcess ();
     ~SomeLongProcess();
     
+    void start();
+    
     void run() override;
     
 private:

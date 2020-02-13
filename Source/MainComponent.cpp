@@ -12,10 +12,6 @@
 MainComponent::MainComponent()
 {
     
-    initProcess.addListener(this);
-    
-    addAndMakeVisible(splash);
-    
     setSize (600, 400);
     
 }
@@ -38,14 +34,5 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized()
 {
-    splash.setBounds(getLocalBounds().reduced(100));
-
-}
-
-
-void MainComponent::exitSignalSent()
-{
-    DBG("LONG PROCESS IS DONE");
-//    splash.setVisible(false);
 
 }

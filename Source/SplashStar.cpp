@@ -12,11 +12,13 @@
 #include "SplashStar.h"
 
 //==============================================================================
-SplashStar::SplashStar()
+SplashStar::SplashStar(int w, int h): SplashScreen("splash", w, h, true)
 {
 
     star = Drawable::createFromImageData(BinaryData::splashStar_png, BinaryData::splashStar_pngSize);
     addAndMakeVisible(star.get());
+
+
 }
 
 SplashStar::~SplashStar()
@@ -32,7 +34,5 @@ void SplashStar::paint (Graphics& g)
 
 void SplashStar::resized()
 {
-
     star->setTransformToFit(getLocalBounds().reduced(50, 50).toFloat(), RectanglePlacement::centred);
-
 }

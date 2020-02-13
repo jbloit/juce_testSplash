@@ -10,9 +10,10 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
+#include "SomeLongProcess.h"
 
 //==============================================================================
-class testSplashApplication  : public JUCEApplication
+class testSplashApplication  : public JUCEApplication, public Thread::Listener
 {
 public:
     //==============================================================================
@@ -27,9 +28,27 @@ public:
     {
         // This method is where you should put your application's initialisation code..
 
+        
+        // Show splash while doing some init (extracting assets for instance)
+        const Rectangle<int> screenSize = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+        
+//        splashSreen  = new SplashStar(screenSize.getWidth(), screenSize.getHeight());
+        splashSreen  = new SplashStar(200, 400);
+
+        
+    
+        initProcess.addListener(this);
+        initProcess.start();
+        
         mainWindow.reset (new MainWindow (getApplicationName()));
     }
 
+   void exitSignalSent() override
+    {
+        DBG("LONG PROCESS FINISHED");
+        splashSreen->deleteAfterDelay(RelativeTime(1), true);
+    }
+    
     void shutdown() override
     {
         // Add your application's shutdown code here..
@@ -99,6 +118,8 @@ public:
 
 private:
     std::unique_ptr<MainWindow> mainWindow;
+    SplashScreen* splashSreen;
+    SomeLongProcess initProcess;
 };
 
 //==============================================================================

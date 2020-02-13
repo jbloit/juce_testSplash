@@ -14,10 +14,14 @@ SomeLongProcess::SomeLongProcess() : Thread ("Long Process Thread")
 {
     DBG("SOME LONG PROCESS: CONSTRUCTOR CALLED");
     
-    startThread();
+//    startThread();
     DBG("SOME LONG PROCESS: CONSTRUCTOR EXIT");
 }
 
+void SomeLongProcess::start()
+{
+    startThread();
+}
 
 SomeLongProcess::~SomeLongProcess()
 {
@@ -33,8 +37,14 @@ void SomeLongProcess::run()
         DBG("SOME LONG PROCESS: just wasting cpu :" << count);
         
         if (count > 200000){
-            threadShouldExit();
+            // because this is a background thread, we mustn't do any UI work without
+            // first grabbing a MessageManagerLock..
+            const MessageManagerLock mml (Thread::getCurrentThread());
             
+            if (! mml.lockWasGained())  // if something is trying to kill this job, the lock
+                return;                 // will fail, in which case we'd better return..
+            
+            // now we've got the UI thread locked, we can mess about with the components
             signalThreadShouldExit();
         }
     }

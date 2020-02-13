@@ -15,10 +15,10 @@
 //==============================================================================
 /*
 */
-class SplashStar    : public Component
+class SplashStar    : public SplashScreen
 {
 public:
-    SplashStar();
+    SplashStar(int w, int h);
     ~SplashStar();
 
     void paint (Graphics&) override;
