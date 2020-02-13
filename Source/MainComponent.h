@@ -10,7 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SplashStar.h"
-
+#include "SomeLongProcess.h"
 
 //==============================================================================
 /*
@@ -33,6 +33,7 @@ private:
 
     SplashStar splash;
 
+    SomeLongProcess initProcess;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

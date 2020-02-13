@@ -3,6 +3,10 @@
 <JUCERPROJECT id="aLlLR6" name="testSplash" projectType="guiapp" jucerVersion="5.4.5">
   <MAINGROUP id="Gtjq48" name="testSplash">
     <GROUP id="{D3B1B889-75EF-B041-9530-B1E0016B9D5D}" name="Source">
+      <FILE id="Y4QmIA" name="SomeLongProcess.cpp" compile="1" resource="0"
+            file="Source/SomeLongProcess.cpp"/>
+      <FILE id="Rubnl8" name="SomeLongProcess.h" compile="0" resource="0"
+            file="Source/SomeLongProcess.h"/>
       <FILE id="rRrRDa" name="SplashStar.cpp" compile="1" resource="0" file="Source/SplashStar.cpp"/>
       <FILE id="ln1f1x" name="SplashStar.h" compile="0" resource="0" file="Source/SplashStar.h"/>
       <FILE id="zCVdCz" name="splashStar.png" compile="0" resource="1" file="assets/splashStar.png"/>
