@@ -27,7 +27,7 @@ SplashStar::~SplashStar()
 void SplashStar::paint (Graphics& g)
 {
 
-    g.fillAll (Colours::blanchedalmond); 
+    g.fillAll (Colours::blanchedalmond);
 }
 
 void SplashStar::resized()

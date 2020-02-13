@@ -10,14 +10,11 @@
 
 #include "SomeLongProcess.h"
 
-SomeLongProcess::SomeLongProcess()
+SomeLongProcess::SomeLongProcess() : Thread ("Long Process Thread")
 {
     DBG("SOME LONG PROCESS: CONSTRUCTOR CALLED");
     
-    for (int i = 0; i < 2000000; ++i){
-            DBG("SOME LONG PROCESS: just wasting cpu");
-    }
-    
+    startThread();
     DBG("SOME LONG PROCESS: CONSTRUCTOR EXIT");
 }
 
@@ -25,4 +22,15 @@ SomeLongProcess::SomeLongProcess()
 SomeLongProcess::~SomeLongProcess()
 {
     DBG("SOME LONG PROCESS: DESTRUCTOR CALLED");
+    stopThread (2000);
+}
+
+void SomeLongProcess::run()
+{
+    
+    for (int i = 0; i < 200000; ++i){
+        DBG("SOME LONG PROCESS: just wasting cpu :" << i);
+        
+    }
+    signalThreadShouldExit();
 }

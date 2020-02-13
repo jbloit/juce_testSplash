@@ -12,9 +12,11 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class SomeLongProcess
+class SomeLongProcess: public Thread
 {
 public:
     SomeLongProcess ();
     ~SomeLongProcess();
+    
+    void run() override;
 };
