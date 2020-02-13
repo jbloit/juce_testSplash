@@ -33,7 +33,7 @@ public:
         const Rectangle<int> screenSize = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
         
 //        splashSreen  = new SplashStar(screenSize.getWidth(), screenSize.getHeight());
-        splashSreen  = new SplashStar(200, 400);
+        splashSreen  = new SplashStar(screenSize.getWidth(), screenSize.getHeight());
 
         
     
