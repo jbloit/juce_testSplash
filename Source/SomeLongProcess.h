@@ -19,4 +19,7 @@ public:
     ~SomeLongProcess();
     
     void run() override;
+    
+private:
+    int count = 0;
 };

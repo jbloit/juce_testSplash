@@ -17,6 +17,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(splash);
     
     setSize (600, 400);
+    
 }
 
 MainComponent::~MainComponent()
@@ -32,6 +33,7 @@ void MainComponent::paint (Graphics& g)
     g.setFont (Font (16.0f));
     g.setColour (Colours::white);
     g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
+    
 }
 
 void MainComponent::resized()
@@ -44,4 +46,6 @@ void MainComponent::resized()
 void MainComponent::exitSignalSent()
 {
     DBG("LONG PROCESS IS DONE");
+//    splash.setVisible(false);
+
 }

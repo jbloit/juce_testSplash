@@ -27,10 +27,15 @@ SomeLongProcess::~SomeLongProcess()
 
 void SomeLongProcess::run()
 {
-    
-    for (int i = 0; i < 200000; ++i){
-        DBG("SOME LONG PROCESS: just wasting cpu :" << i);
+    while (! threadShouldExit())
+    {
+        count++;
+        DBG("SOME LONG PROCESS: just wasting cpu :" << count);
         
+        if (count > 200000){
+            threadShouldExit();
+            
+            signalThreadShouldExit();
+        }
     }
-    signalThreadShouldExit();
 }
